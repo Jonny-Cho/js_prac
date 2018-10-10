@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>이벤트리스너 맛보기 - 끝말잇기</title>
+</head>
+<body>
+    <script>
+        var body = document.body;
+        var word = document.createElement('div');
+        word.textContent = '제로초';
+        document.body.append(word);
+
+        var form = document.createElement('form');
+        document.body.append(form);
+
+        var input = document.createElement('input');
+        form.append(input);
+        var button = document.createElement('button');
+        button.textContent = '입력!';
+        form.append(button);
+        var result = document.createElement('div');
+        document.body.append(result);
+
+        form.addEventListener('submit', function (event){
+            event.preventDefault();
+            if(word.textContent[word.textContent.length -1] === input.value[0]){
+                result.textContent = '딩동댕';
+                word.textContent = input.value;
+                input.value = '';
+                input.focus();
+            } else {
+                result.textContent = '땡';
+                input.value = '';
+                input.focus();
+            }
+        });
+    </script>
+</body>
+</html>
