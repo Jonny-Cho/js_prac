@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BingoArr</title>
+    <style>
+        table{
+            border: 2px solid red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // 배열 birds 정의
+        birds = [];
+        // 25개 숫자 1차원 배열 생성
+        for (i = 0; i < 25; i++) {
+            birds[i] = i + 1;
+        }
+        // console.log(birds);
+
+        // 배열 섞기
+        birds.sort(function (a, b) {
+            return Math.random() - 0.5
+        });
+        // console.log(birds);
+
+        // 5*5 2차원배열 정의, 생성
+        bingoArr = [];
+        for (x = 0; x < 5; x++) {
+            bingoArr[x] = new Array(5);
+        }
+
+        // birds를 5개씩 끊어 2차원배열에 저장
+        // for (i = 0; i < 5; i++) {
+        //     for (j = 0; j < 5; j++) {
+        //         bingoArr[i][j] = birds[i * 5 + j];
+        //     }
+        // }
+
+        // birds를 5개씩 끊어 2차원배열에 저장 (for문 1번)
+        for(i=0; i<25 ; i++){
+            bingoArr[Math.floor(i/5)][i%5] = birds[i];
+        }
+
+        // 2차원배열 확인
+        for (i = 0; i < bingoArr.length; i++) {
+            console.log(bingoArr[i]);
+        }
+
+        // html table에 값 넣기
+        document.write("<table border='1'>");
+        for(i=0; i<bingoArr.length; i++){
+            document.write("<tr>");
+            for(j=0; j<bingoArr[i].length; j++){
+                document.write("<td>");
+                document.write(bingoArr[i][j]);
+                document.write("</td>");
+            }
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+</body>
+
+</html>
