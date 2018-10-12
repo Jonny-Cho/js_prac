@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FindMax</title>
+</head>
+<body>
+    <script>
+        function findMax(a, b) {
+            var i;
+            var max = -Infinity // 음의 무한대
+
+            // console.log(arguments);
+
+            for(i = 0; i< arguments.length; i++){
+                if(arguments[i] > max){
+                    max = arguments[i];
+                }
+            }
+            return max;
+        }
+    </script>
+</body>
+</html>
