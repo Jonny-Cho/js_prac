@@ -8,8 +8,9 @@
     <title>BingoArr</title>
     <style>
         table{
-            border: 2px solid red;
+            border: 1px solid black;
         }
+        
     </style>
 </head>
 
@@ -28,13 +29,20 @@
         birds.sort(function (a, b) {
             return Math.random() - 0.5
         });
-        // console.log(birds);
+        console.log(birds);
 
         // 5*5 2차원배열 정의, 생성
-        bingoArr = [];
-        for (x = 0; x < 5; x++) {
-            bingoArr[x] = new Array(5);
+        var bingoArr = [];
+        for (i = 0; i < 5; i++) {
+            bingoArr[i] = new Array(5);
         }
+
+        // 2차원 배열 하나씩 출력
+        // for(i=0; i<5; i++){
+        //     for(j=0; j<5; j++){
+        //         console.log(bingoArr[i][j]);
+        //     }
+        // }
 
         // birds를 5개씩 끊어 2차원배열에 저장
         // for (i = 0; i < 5; i++) {
@@ -42,9 +50,10 @@
         //         bingoArr[i][j] = birds[i * 5 + j];
         //     }
         // }
+        // console.log();
 
-        // birds를 5개씩 끊어 2차원배열에 저장 (for문 1번)
-        for(i=0; i<25 ; i++){
+        // // birds를 5개씩 끊어 2차원배열에 저장 (for문 1번)
+        for(i=0; i<birds.length ; i++){
             bingoArr[Math.floor(i/5)][i%5] = birds[i];
         }
 
@@ -54,17 +63,35 @@
         }
 
         // html table에 값 넣기
-        document.write("<table border='1'>");
-        for(i=0; i<bingoArr.length; i++){
-            document.write("<tr>");
+        // document.write("<table border='1'>");
+        // for(i=0; i<bingoArr.length; i++){
+        //     document.write("<tr>");
+        //     for(j=0; j<bingoArr[i].length; j++){
+        //         document.write("<td>");
+        //         document.write(bingoArr[i][j]);
+        //         document.write("</td>");
+        //     }
+        //     document.write("</tr>");
+        // }
+        // document.write("</table>");
+
+
+        // // DOM으로 table만들기
+        var body = document.body;
+        var table = document.createElement('table');
+        table.setAttribute("border", "1")
+        table.setAttribute("class", "table")
+        document.body.append(table);
+
+        for(i=0 ; i<bingoArr.length; i++){
+            var tr = document.createElement('tr');
+            table.append(tr);
             for(j=0; j<bingoArr[i].length; j++){
-                document.write("<td>");
-                document.write(bingoArr[i][j]);
-                document.write("</td>");
+                var td = document.createElement('td');
+                td.textContent = bingoArr[i][j];
+                tr.append(td);
             }
-            document.write("</tr>");
         }
-        document.write("</table>");
     </script>
 </body>
 
