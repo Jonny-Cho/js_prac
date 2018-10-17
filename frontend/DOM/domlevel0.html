@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM level 0</title>
+</head>
+<body>
+    <h1 id="header">Click me!</h1>
+    <script>
+    window.onload = function(){
+        var header = document.getElementById('header');
+
+        header.onclick = click;
+        // header.onclick = function(){ alert("Hello"); }
+    }
+    function click() { alert("Hello"); }
+    </script>
+</body>
+</html>

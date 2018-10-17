@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        h1 {
+            display: inline-block;
+        }
+
+        h1#last {
+            color: white;
+            background-color: blue;
+        }
+
+        .newCls {
+            color: greenyellow;
+            background-color: brown;
+        }
+
+        .even {
+            color: red;
+            background-color: green;
+            border: 5px solid black;
+        }
+
+        div + p{ 
+            /*div 바로 뒤에나오는 p(형제)*/
+            border: 5px solid black;
+        }
+
+        p ~ div{ 
+            /* p 뒤에 있는 모든 div(형제). 이전에 있는 div는 선택 x */
+            border: 5px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h1 class = "even">Hello1</h1>
+    <h1>Hello2</h1>
+    <h1 class = "even">Hello3</h1>
+    <h1 id = "last">Hello4</h1>
+
+    <h3 class="newCls even">world</h3>
+    <h3 class="newCls child">world</h3>
+    <h3 class="newCls">world</h3>
+
+    <div>
+        <div>divdivd</div>
+        <p>hello</p>
+        <div>hello1</div>
+        <p>hello2</p>
+        <p>hello</p>
+        <div>hello3</div>
+        <p>hello</p>
+    </div>
+
+    <img src="cat.jpg" alt="" width="100px">
+
+</body>
+</html>

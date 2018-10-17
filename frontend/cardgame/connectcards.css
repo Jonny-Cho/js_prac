@@ -1,0 +1,11 @@
+img {
+    width: 100px;
+    height: auto;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.back {
+    width: 100px;
+    height: 125px;
+}

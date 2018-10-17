@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            width: 300px;
+            height: auto;
+        }
+        .img{
+            width: 360px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://static1.squarespace.com/static/5abd8db4620b85fa99f15131/5abe558a03ce64a18962e2c0/5abe58b2352f538ad6718cd2/1522423429332/Jack+-+Spades.png?format=500w" alt="" class="img">
+
+    <!-- <img src="http://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-fournier-505-1_grande.jpg?v=1530155575" alt=""> -->
+
+    <button onclick='hide()'>뒤집기</button>
+    <button onclick='show()'>보이기</button>
+    
+    <script>
+        var img = document.querySelector('img');
+        
+        function hide(){
+            img.setAttribute('src', "http://cdn.shopify.com/s/files/1/0200/7616/products/playing-cards-fournier-505-1_grande.jpg?v=1530155575");
+        }
+
+        function show(){
+            img.setAttribute('src', "https://static1.squarespace.com/static/5abd8db4620b85fa99f15131/5abe558a03ce64a18962e2c0/5abe58b2352f538ad6718cd2/1522423429332/Jack+-+Spades.png?format=500w");
+        }
+    </script>
+</body>
+</html>

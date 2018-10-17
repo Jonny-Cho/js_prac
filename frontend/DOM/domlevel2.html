@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM level 2</title>
+</head>
+<body>
+    <h1 id="h">Click me!!</h1>
+    <script>
+    window.onload = function(){
+        var h = document.getElementById('h');
+
+        if(h.attachEvent){ // IE
+            var handler = function(){
+                alert('clicked - IE');
+                window.event.srcElement.style.color = 'red';
+                window.event.srcElement.detachEvent('onclick', handler);
+            };
+
+            h.attachEvent('onclick', handler);
+        } else { // IE가 아닌경우
+            var handler = function(){
+                alert('clicked - not IE');
+                this.style.color = 'red';
+                this.removeEventListener('click', handler);
+            }
+            h.addEventListener('click', handler);
+        }
+    }
+    </script>
+</body>
+</html>
