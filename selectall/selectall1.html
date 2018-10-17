@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select All</title>
+    <style>
+        .checkbox {
+            display: inline;
+            float: left;
+            /* background-color: gray; */
+            text-align:center;
+        }
+
+        #area{
+            /* background-color: yellow; */
+            display: inline;
+            float: left; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkbox">
+        전체선택 : <input type="checkbox" id="all" value="전체선택"> <br>
+        야구 : <input type="checkbox" id="baseball" value="야구"><br>
+        농구 : <input type="checkbox" id="basketball" value="농구"> <br>
+        축구 : <input type="checkbox" id="soccer" value="축구"> <br>
+        배구 : <input type="checkbox" id="volleyball" value="배구"> <br>
+    </div>
+
+    <textarea name="exercise" id="textarea" cols="30" rows="10"></textarea>
+
+    <script>
+        var textArr = [];
+        var inputArr;
+        var result;
+
+        window.onload = function () { // main
+            inputArr = document.querySelectorAll('input');
+            result = document.getElementById('textarea');
+            // 1. 작업 대상 선택
+
+            // 2. 이벤트 등록
+            for (let i = 0; i < inputArr.length; i++) {
+                inputArr[i].onclick = i == 0 ? allClick : chkClick;
+            }
+        }
+
+        function allClick() {
+            // alert("hello");
+            for (var i = 1; i < inputArr.length; i++) {
+                if (this.checked) {
+                    inputArr[i].checked = true;
+                    textArr.push(inputArr[i].value);
+                    console.log(textArr);
+                    result.textContent = textArr;
+                } else {
+                    inputArr[i].checked = false;
+                    textArr = [];
+                    console.log(textArr);
+                    result.textContent = "";
+                };
+            }
+        }
+
+        function chkClick() {
+            // 클릭된 체크박스 내용이 textarea에 저장
+            if (this.checked) {
+                textArr.push(this.value);
+                console.log(textArr);
+                result.textContent = textArr;
+            } else {
+                textArr.splice(textArr.indexOf(this.value), 1);
+                console.log(textArr);
+                result.textContent = "";
+                result.textContent += textArr;
+            }
+        }
+    </script>
+</body>
+
+</html>

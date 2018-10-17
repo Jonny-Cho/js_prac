@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select All</title>
+    <style>
+        .checkbox {
+            display: inline;
+            float: left;
+            /* background-color: gray; */
+            text-align:center;
+        }
+
+        #area{
+            /* background-color: yellow; */
+            display: inline;
+            float: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="checkbox">
+        전체선택 : <input type="checkbox" id="all"> <br>
+        야구 : <input type="checkbox" id="baseball" value="야구"><br>
+        농구 : <input type="checkbox" id="basketball" value="농구"> <br>
+        축구 : <input type="checkbox" id="soccer" value="축구"> <br>
+        배구 : <input type="checkbox" id="volleyball" value="배구"> <br>
+    </div>
+
+    <textarea name="exercise" id="textarea" cols="30" rows="10"></textarea>
+
+    <script>
+        window.onload = function () {
+            var all = document.getElementById('all');
+            var baseball = document.getElementById('baseball');
+            var basketball = document.getElementById('basketball');
+            var soccer = document.getElementById('soccer');
+            var volleyball = document.getElementById('volleyball');
+            var result = document.getElementById('textarea');
+
+            var textArr = [];
+
+            function addText(sports, text) {
+                sports.addEventListener('change', function () {
+                    if (this.checked) {
+                        textArr.push(text);
+                        console.log(textArr);
+                        result.textContent = textArr;
+                    } else {
+                        textArr.splice(textArr.indexOf(text), 1);
+                        console.log(textArr);
+                        result.textContent = "";
+                        result.textContent += textArr;
+                    }
+                });
+            }
+
+            addText(baseball, '야구');
+            addText(basketball, '농구');
+            addText(soccer, '축구');
+            addText(volleyball, '배구');
+
+            all.addEventListener('change', function () {
+                if (this.checked) {
+                    baseball.checked = true;
+                    basketball.checked = true;
+                    soccer.checked = true;
+                    volleyball.checked = true;
+                    textArr.push(baseball.getAttribute("value"));
+                    textArr.push(basketball.getAttribute("value"));
+                    textArr.push(soccer.getAttribute("value"));
+                    textArr.push(volleyball.getAttribute("value"));
+                    result.textContent = textArr;
+                } else {
+                    baseball.checked = false;
+                    basketball.checked = false;
+                    soccer.checked = false;
+                    volleyball.checked = false;
+                    textArr = [];
+                    result.textContent = textArr;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

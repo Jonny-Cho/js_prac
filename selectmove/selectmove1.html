@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        select {
+                width: 100px;
+                height: 150px;
+                /* background-color: yellow; */
+                float: left;
+            }
+    
+        .buttons{
+            display: inline;
+            /* background-color: gray; */
+            float: left;
+            margin-top: 8px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <select id="leftsports" name="leftsports" multiple>
+                    <option value="baseball">야구</option>
+                    <option value="basketball">농구</option>
+                    <option value="soccer">축구</option>
+                    <option value="volleyball">배구</option>
+                </select>
+            </td>
+            <td>
+                <div class="buttons">
+                    <input type="button" value=">"><br>
+                    <input type="button" value="<"><br>
+                    <input type="button" value=">>"><br>
+                    <input type="button" value="<<"><br>
+                </div>
+            </td>
+            <td>
+                <select id="rightsports" name="rightsports" multiple>
+
+                </select>
+            </td>
+        </tr>
+    </table>
+
+
+    <script>
+        var leftsports = document.querySelector('#leftsports');
+        var leftoption = document.querySelectorAll('#leftsports > option');
+        var btn = document.querySelectorAll('input');
+        var rightsports = document.querySelector('#rightsports');
+
+
+        // >
+        btn[0].onclick = function () {
+            // console.log(leftoption);
+            for (var i = 0; i < leftoption.length; i++) {
+                if (leftoption[i].selected) {
+                    rightsports.appendChild(leftoption[i]);
+                }
+            }
+        };
+
+        // <
+        btn[1].onclick = function () {
+            var rightoption = document.querySelectorAll('#rightsports > option');
+            for (var i = 0; i < rightoption.length; i++) {
+                if (rightoption[i].selected) {
+                    // console.log(rightoption);
+                    leftsports.appendChild(rightoption[i]);
+                }
+            }
+        };
+
+        // >>
+        btn[2].onclick = function () {
+            // console.log(leftoption);
+            for (var i = 0; i < leftoption.length; i++) {
+                rightsports.appendChild(leftoption[i]);
+            }
+        };
+
+        // <<
+        btn[3].onclick = function () {
+            var rightoption = document.querySelectorAll('#rightsports > option');
+            for (var i = 0; i < rightoption.length; i++) {
+                leftsports.appendChild(rightoption[i]);
+            }
+        };
+    </script>
+</body>
+
+</html>

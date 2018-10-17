@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Select Move</title>
+    <style>
+
+        select {
+            width: 100px;
+            height: 150px;
+            /* background-color: yellow; */
+            float: left;
+        }
+
+        .buttons{
+            display: inline;
+            /* background-color: gray; */
+            float: left;
+            margin-top: 8px;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td>
+                <select id="leftsports" name="leftsports" multiple>
+                    <option value="baseball">야구</option>
+                    <option value="basketball">농구</option>
+                    <option value="soccer">축구</option>
+                    <option value="volleyball">배구</option>
+                </select>
+            </td>
+            <td>
+                <div class="buttons">
+                    <input type="button" value=">"><br>
+                    <input type="button" value="<"><br>
+                    <input type="button" value=">>"><br>
+                    <input type="button" value="<<"><br>
+                </div>
+            </td>
+            <td>
+                <select id="rightsports" name="rightsports" multiple>
+                    <!-- option value textContent -->
+                    <!-- <option value="volleyball">농구</option>
+                    <option value="volleyball">축구</option>
+                    <option value="volleyball">배구</option>
+                    <option value="volleyball">야구</option> -->
+                </select>
+            </td>
+        </tr>
+    </table>
+    <script>
+        window.onload = function () {
+            var leftsports = document.querySelector('#leftsports');
+            var leftoption = document.querySelectorAll('#leftsports > option');
+            var btn = document.querySelectorAll('input');
+            var rightsports = document.querySelector('#rightsports');
+            
+            // > 버튼을 눌렀을 때
+
+            // 왼쪽 리스트 배열에 모두 담기
+            var textArr = [];
+            for (let i = 0; i < leftoption.length; i++) {
+                textArr.push(leftoption[i].innerHTML);
+            }
+            var selectedArr = [];
+
+            // > 버튼을 클릭했을 때
+            btn[0].onclick = function () {
+                for (let i = 0; i < leftoption.length; i++) {
+                    // 선택된 텍스트를 배열에서 뽑는다
+                    if (leftoption[i].selected) {
+                        var splice = textArr.splice(textArr.indexOf(leftoption[i].innerHTML), 1);
+                        // console.log("leftoption[i].innerHTML", leftoption[i].innerHTML);
+                        // console.log("splice", splice);
+
+                        // console.log("textArr", textArr);
+                        selectedArr.push(splice[0]);
+                        // console.log("selectArr", selectedArr);
+
+                        // 뽑은 텍스트(selectedArr)를 오른쪽 셀렉트박스에 option 태그의 innerHTML로 넣는다
+                        var op = document.createElement('option');
+                        // op.setAttribute('value', 'volleyball');
+                        op.innerHTML = splice[0];
+                        rightsports.append(op);
+
+                        // 원래있던 option 모두 지우고
+
+                        for (var j = 0; j < leftoption.length; j++) {
+                            leftsports.removeChild(leftsports.childNodes[0]);
+                        }
+                    }
+                }
+                // textArr에 있는 값으로 다시 option을 만든다
+                // console.log("textArr", textArr);
+                for (let i = 0; i < textArr.length; i++) {
+                    var leftop = document.createElement('option');
+                    leftop.innerHTML = textArr[i];
+                    leftsports.append(leftop);
+                }
+            }
+
+            var rightoption = document.querySelectorAll('#rightsports > option');
+            console.log(rightoption.length);
+
+            // < 버튼을 클릭했을 때
+            btn[1].onclick = function () {
+                var rightoption = document.querySelectorAll('#rightsports > option');
+                console.log(rightoption[0].innerHTML);
+                console.log(rightoption[1].innerHTML);
+                console.log(rightoption.length);
+
+
+
+            }
+
+
+
+        }
+    </script>
+</body>
+
+</html>
