@@ -20,6 +20,8 @@ function show(){
         let img = document.querySelectorAll('img');
         img[i].setAttribute('src', imgArr[i]);
         img[i].setAttribute('class', 'heart'+(i+1));
+        img[i].setAttribute('data-pos', i);
+        console.log(img[i].getAttribute('data-pos'));
     }
 }
 
@@ -28,7 +30,6 @@ function hide(){
         let img = document.querySelectorAll('img');
         img[i].setAttribute('src', 'img/back.jpg');
         img[i].setAttribute('class', 'back');
-        console.log(img[i]);
     }
 }
 
